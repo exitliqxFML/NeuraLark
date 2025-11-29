@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NeuraLark ($LARK) – The AI Jester of CT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="NeuraLark ($LARK) is the AI-powered jester bird of crypto Twitter – a Pepe-faced, cybernetic meme engine built for chaos, creative energy, and community-driven ideas." />
+
+  <!-- Open Graph / X preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="NeuraLark ($LARK) – AI Jester of CT" />
+  <meta property="og:description" content="Pepe-faced jester bird. Duck beak. Cyber armor. Red/blue bells. Built to turn your shitposts into memes and your ideas into chaos." />
+  <!-- TODO: Replace with your hosted image URL once you upload your LARK art -->
+  <meta property="og:image" content="https://your-domain.com/neuralark-banner.png" />
+  <meta property="og:url" content="https://your-domain.com/" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NeuraLark ($LARK) – AI Jester of CT" />
+  <meta name="twitter:description" content="The NeuraLark meme generator + jester bird coin. Same jester. Same face. Infinite chaos." />
+  <meta name="twitter:image" content="https://your-domain.com/neuralark-banner.png" />
+
+  <style>
+    :root {
+      --bg: #050612;
+      --bg-soft: #0a0f1f;
+      --bg-card: #070b16;
+      --accent: #4ad3ff;
+      --accent2: #c15bff;
+      --accent3: #ffe66b;
+      --danger: #ff5b7f;
+      --text-main: #f5f5f7;
+      --text-muted: #9ca0bc;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.85);
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(193, 91, 255, 0.16) 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(74, 211, 255, 0.16) 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.02) 0, transparent 45%),
+        var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(5, 6, 18, 0.96), rgba(5, 6, 18, 0.8));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-orb {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      padding: 2px;
+      background: conic-gradient(from 180deg, var(--accent), var(--accent2), var(--accent3), var(--danger), var(--accent));
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+    }
+
+    .logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at 30% 20%, #ffffff, #c8f3ff 25%, #050612 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: #050612;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .logo-text-sub {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 0.16s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .pill {
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(7, 9, 20, 0.94);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .pill-accent {
+      border-color: rgba(74, 211, 255, 0.4);
+      background: radial-gradient(circle at 0 0, rgba(74, 211, 255, 0.22), transparent 60%);
+      color: var(--accent);
+    }
+
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3.5rem;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.5rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.18rem 0.7rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(7, 9, 22, 0.96);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #76ffd1, #0aff9d);
+      box-shadow: 0 0 10px rgba(10, 255, 157, 0.85);
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 3.5vw + 1.2rem, 3.5rem);
+      line-height: 1.03;
+      margin-bottom: 0.8rem;
+    }
+
+    .highlight {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .tag {
+      padding: 0.26rem 0.75rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(7, 9, 22, 0.94);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      transition:
+        transform 0.12s ease-out,
+        box-shadow 0.12s ease-out,
+        background 0.12s ease-out,
+        border-color 0.12s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background:
+        radial-gradient(circle at 0 0, rgba(193, 91, 255, 0.45), transparent 55%),
+        linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #050612;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
+    }
+
+    .btn-ghost {
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(5, 6, 18, 0.96);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(74, 211, 255, 0.4);
+      background: radial-gradient(circle at 0 0, rgba(74, 211, 255, 0.16), transparent 60%);
+      transform: translateY(-1px);
+    }
+
+    .hero-footnote {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-footnote span {
+      color: var(--accent);
+    }
+
+    .hero-art {
+      position: relative;
+      width: min(380px, 100%);
+      justify-self: center;
+      aspect-ratio: 1 / 1;
+      padding: 2px;
+      border-radius: 30px;
+      background: conic-gradient(from 180deg, var(--accent), var(--accent2), var(--accent3), var(--danger), var(--accent));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-art-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.14), transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(74, 211, 255, 0.18), transparent 60%),
+        radial-gradient(circle at 0% 100%, rgba(193, 91, 255, 0.2), transparent 65%),
+        var(--bg-soft);
+      display: flex;
+      flex-direction: column;
+      padding: 1.2rem 1.2rem 1.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-art-tag {
+      align-self: flex-start;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-art-illus {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-art-circle {
+      width: 86%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 20%, #ffffff, #ffd3ff 18%, #1a1025 60%),
+        radial-gradient(circle at 80% 80%, #4ad3ff 0, #050612 68%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9);
+    }
+
+    /* This is the "JesterBird" silhouette block – Pepe face structure, duck beak, jester hat, cyber armor */
+    .bird-face {
+      position: absolute;
+      inset: 14%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(4px);
+    }
+
+    .bird-inner {
+      width: 88%;
+      height: 88%;
+      border-radius: 52% 52% 46% 46%;
+      background:
+        radial-gradient(circle at 30% 20%, #ffe1ff, #f6f1ff 26%, #f4c2ff 40%, #0d0b20 80%);
+      position: relative;
+      box-shadow: 0 0 24px rgba(0, 0, 0, 0.65);
+    }
+
+    .bird-eye {
+      position: absolute;
+      top: 32%;
+      width: 24%;
+      height: 22%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffffff, #aef3ff 40%, #060914 75%);
+      box-shadow: 0 0 18px rgba(74, 211, 255, 0.75);
+    }
+
+    .bird-eye.left {
+      left: 18%;
+    }
+
+    .bird-eye.right {
+      right: 18%;
+    }
+
+    .bird-eye::after {
+      content: "";
+      position: absolute;
+      inset: 25%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 30%, #76ffd1, #0aff9d 40%, #020611 80%);
+    }
+
+    .bird-beak {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 42%;
+      height: 26%;
+      border-radius: 50% 50% 70% 70%;
+      background:
+        radial-gradient(circle at 50% 0%, #ffe9a1, #ffcf5b 40%, #f2a14a 75%);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.65);
+    }
+
+    .bird-plate {
+      position: absolute;
+      bottom: -6%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 34%;
+      border-radius: 50% 50% 40% 40%;
+      background:
+        linear-gradient(160deg, rgba(50, 80, 130, 0.95), rgba(8, 16, 40, 0.95));
+      box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(164, 211, 255, 0.4);
+    }
+
+    .bird-plate-line {
+      position: absolute;
+      inset-inline: 14%;
+      bottom: 34%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(74, 211, 255, 0.1), rgba(193, 91, 255, 0.8), rgba(74, 211, 255, 0.1));
+    }
+
+    .bird-plate-dot {
+      position: absolute;
+      bottom: 18%;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #76ffd1, #0aff9d);
+      box-shadow: 0 0 12px rgba(10, 255, 157, 0.85);
+    }
+
+    .bird-plate-dot.left {
+      left: 22%;
+    }
+
+    .bird-plate-dot.right {
+      right: 22%;
+    }
+
+    .jester-hat {
+      position: absolute;
+      top: -4%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110%;
+      height: 52%;
+    }
+
+    .jester-half {
+      position: absolute;
+      top: 0;
+      width: 54%;
+      height: 100%;
+      border-radius: 80% 80% 40% 40%;
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.75);
+    }
+
+    .jester-half.left {
+      left: 0;
+      background: radial-gradient(circle at 40% 20%, #ff9fbf, #ff5b7f 40%, #521231 80%);
+    }
+
+    .jester-half.right {
+      right: 0;
+      background: radial-gradient(circle at 60% 20%, #9fd9ff, #4ad3ff 40%, #123652 80%);
+    }
+
+    .jester-bell {
+      position: absolute;
+      bottom: -6%;
+      width: 18%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 20%, #fffadd, #ffd56b 36%, #f0a824 80%);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+    }
+
+    .jester-bell.left {
+      left: 8%;
+    }
+
+    .jester-bell.right {
+      right: 8%;
+    }
+
+    .ear-module {
+      position: absolute;
+      top: 40%;
+      width: 18%;
+      height: 32%;
+      border-radius: 16px;
+      background:
+        linear-gradient(180deg, rgba(10, 24, 56, 0.9), rgba(7, 15, 30, 0.95));
+      border: 1px solid rgba(147, 190, 255, 0.6);
+      box-shadow: 0 0 16px rgba(74, 211, 255, 0.75);
+    }
+
+    .ear-module.left {
+      left: -2%;
+    }
+
+    .ear-module.right {
+      right: -2%;
+    }
+
+    .ear-line {
+      position: absolute;
+      inset-inline: 22%;
+      top: 30%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(74, 211, 255, 0.1), rgba(193, 91, 255, 0.8), rgba(74, 211, 255, 0.1));
+    }
+
+    .ear-bar {
+      position: absolute;
+      left: 24%;
+      right: 24%;
+      height: 5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #76ffd1, #4ad3ff);
+    }
+
+    .ear-bar.one {
+      bottom: 32%;
+    }
+
+    .ear-bar.two {
+      bottom: 20%;
+    }
+
+    .hero-art-caption {
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-art-caption strong {
+      color: var(--accent);
+    }
+
+    /* Sections */
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-body {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 680px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      background: radial-gradient(circle at 0 0, rgba(74, 211, 255, 0.1), transparent 55%), var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1rem;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.75);
+      font-size: 0.9rem;
+    }
+
+    .card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--text-muted);
+    }
+
+    .chip-hot {
+      border-color: rgba(255, 91, 127, 0.6);
+      color: var(--danger);
+    }
+
+    .cta-box {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      background: rgba(7, 9, 22, 0.88);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .cta-box strong {
+      color: var(--accent);
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.2rem 1.25rem 1.6rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.7rem;
+    }
+
+    .footer-links a span {
+      color: var(--accent);
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-art {
+        order: -1;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding-inline: 1rem;
+      }
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-art-caption {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="logo-orb">
+            <div class="logo-inner">L</div>
+          </div>
+          <div>
+            <div class="logo-text-main">$LARK</div>
+            <div class="logo-text-sub">NeuraLark / JesterBird</div>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#meme-gen">Meme Generator</a>
+          <a href="#about">Lore</a>
+          <a href="#roadmap">Roadmap</a>
+        </nav>
+
+        <div class="nav-cta">
+          <div class="pill pill-accent">Launch date: TBD</div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            AI Jester Bird • Meme Coin • CT Experiment
+          </div>
+          <h1>
+            NeuraLark <span class="highlight">($LARK)</span><br />
+            is the AI jester of crypto Twitter.
+          </h1>
+          <p class="hero-sub">
+            Same jester bird. Same Pepe-style face. Duck beak. Cyber armor. Red/blue bells. 
+            Built to turn your throwaway ideas into memes and your memes into a community.
+          </p>
+
+          <div class="hero-tags">
+            <div class="tag">Pepe + Bird Hybrid</div>
+            <div class="tag">AI / Cyborg Vibes</div>
+            <div class="tag">Meme Generator Engine</div>
+            <div class="tag">Community-Driven Chaos</div>
+          </div>
+
+          <div class="hero-actions">
+            <!-- TODO: Replace href with your real links -->
+            <a class="btn btn-primary" href="https://t.me/NeuraLark" target="_blank" rel="noopener">
+              Join Telegram
+            </a>
+            <a class="btn btn-ghost" href="https://x.com/NeuraLark" target="_blank" rel="noopener">
+              Follow on X
+            </a>
+          </div>
+
+          <p class="hero-footnote">
+            <span>Not launched yet.</span> Early degenerates are here to shape the memes, not beg for entry.
+          </p>
+        </div>
+
+        <div class="hero-art">
+          <div class="hero-art-inner">
+            <div class="hero-art-tag">Canonical JesterBird v1</div>
+            <div class="hero-art-illus">
+              <div class="hero-art-circle">
+                <div class="bird-face">
+                  <div class="bird-inner">
+                    <div class="bird-eye left"></div>
+                    <div class="bird-eye right"></div>
+                    <div class="bird-beak"></div>
+                    <div class="bird-plate">
+                      <div class="bird-plate-line"></div>
+                      <div class="bird-plate-dot left"></div>
+                      <div class="bird-plate-dot right"></div>
+                    </div>
+                    <div class="jester-hat">
+                      <div class="jester-half left"></div>
+                      <div class="jester-half right"></div>
+                      <div class="jester-bell left"></div>
+                      <div class="jester-bell right"></div>
+                    </div>
+                    <div class="ear-module left">
+                      <div class="ear-line"></div>
+                      <div class="ear-bar one"></div>
+                      <div class="ear-bar two"></div>
+                    </div>
+                    <div class="ear-module right">
+                      <div class="ear-line"></div>
+                      <div class="ear-bar one"></div>
+                      <div class="ear-bar two"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-art-caption">
+              <span>
+                <strong>Face:</strong> Pepe-style structure, duck beak, glowing AI eyes, cyber armor plate.
+              </span>
+              <span>
+                <strong>Hat:</strong> Red &amp; blue jester halves with gold bells and mechanical ear modules.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MEME GENERATOR -->
+      <section id="meme-gen">
+        <div class="section-kicker">NeuraLark Meme Generator</div>
+        <h2 class="section-title">Feed $LARK a line. Get a meme back.</h2>
+        <p class="section-body">
+          The NeuraLark Meme Generator is simple: you drop a line, a mood, or a completely unhinged thought.
+          The jester bird locks in the <strong>same canonical design</strong> every time and spits out a fresh meme idea 
+          that feels like CT, not corporate marketing.
+        </p>
+
+        <div class="grid grid-3" style="margin-top: 1.4rem;">
+          <div class="card">
+            <h3>1 · Input</h3>
+            <p>“Woke up vibey.” “Launch day meltdown.” “Looking for a sugar momma to fund this coin.” Whatever you’re on.</p>
+            <div class="chip-row">
+              <div class="chip">Raw thoughts</div>
+              <div class="chip">CT slang</div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>2 · JesterBrain</h3>
+            <p>
+              NeuraLark turns that into a scene: baby jester bird, adult armored bird, Pepe-merge, or full chaos —
+              always with the <strong>same jester bird identity</strong>.
+            </p>
+            <div class="chip-row">
+              <div class="chip">AI + meme logic</div>
+              <div class="chip">Consistent character</div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>3 · Output</h3>
+            <p>
+              You get a caption + visual concept ready to feed into your image model or artist.
+              Post it, farm engagement, blame the bird.
+            </p>
+            <div class="chip-row">
+              <div class="chip chip-hot">Post-ready ideas</div>
+              <div class="chip">Degens only</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <strong>Live today:</strong> The first version of the meme generator runs directly inside ChatGPT.  
+          You tell it a line, it returns a NeuraLark-style meme concept using this exact jester bird as the base.
+        </div>
+      </section>
+
+      <!-- LORE / ABOUT -->
+      <section id="about">
+        <div class="section-kicker">Lore</div>
+        <h2 class="section-title">What is NeuraLark?</h2>
+        <p class="section-body">
+          NeuraLark is a meme coin concept born from one rule:
+          <strong>&ldquo;Always the same jester bird.&rdquo;</strong> Pepe-style facial structure, duck beak, red/blue jester hat
+          with gold bells, mechanical ear modules, cyber armor with blue LEDs, metallic feather plating, and a subtle AI glow.
+          Baby or adult, serious or unhinged — it’s always the same character.
+        </p>
+
+        <div class="grid grid-3" style="margin-top: 1.4rem;">
+          <div class="card">
+            <h3>The Face</h3>
+            <p>
+              A mashup of Pepe’s expression with a duck beak and bird body. Expressive eyes, smug energy, and that 
+              “I know something you don’t” CT vibe.
+            </p>
+          </div>
+          <div class="card">
+            <h3>The Armor</h3>
+            <p>
+              Metallic feather plating, cyber chest plate, glowing blue lines and status LEDs. NeuraLark looks like 
+              it escaped from an AI lab and wandered into a meme war.
+            </p>
+          </div>
+          <div class="card">
+            <h3>The Hat</h3>
+            <p>
+              Red and blue jester halves with gold bells that feel half carnival, half glitch. You’ll see it in every meme —
+              the instant visual fingerprint of $LARK.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROADMAP -->
+      <section id="roadmap">
+        <div class="section-kicker">Roadmap (Vibes First, Tech After)</div>
+        <h2 class="section-title">A meme coin built backwards on purpose.</h2>
+        <p class="section-body">
+          No fake promises, no VC pitch decks. We’re starting with memes, aesthetics, and community energy.
+          If this thing deserves a contract, it will get one. If not, it dies as good art.
+        </p>
+
+        <div class="grid grid-3" style="margin-top: 1.4rem;">
+          <div class="card">
+            <h3>Phase 0 · Jester Awakening</h3>
+            <ul style="padding-left: 1.1rem; margin-top: 0.4rem;">
+              <li>Lock canonical jester bird design (done).</li>
+              <li>NeuraLark meme generator online.</li>
+              <li>Telegram + X community seeding.</li>
+              <li>Organic CT discovery. No paid bots.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Phase 1 · If We Actually Launch</h3>
+            <ul style="padding-left: 1.1rem; margin-top: 0.4rem;">
+              <li>On-chain $LARK token on Solana.</li>
+              <li>Fair launch style: no insider god-mode.</li>
+              <li>Basic site + chart + contract tools.</li>
+              <li>Jester quest-style meme contests.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Phase 2 · Meme Utility</h3>
+            <ul style="padding-left: 1.1rem; margin-top: 0.4rem;">
+              <li>Meme generator integrations &amp; bots.</li>
+              <li>NeuraLark-themed NFT / sticker packs.</li>
+              <li>Community tools for prompts &amp; templates.</li>
+              <li>Collabs with other CT projects (maybe).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <span class="mono">
+            Disclaimer: Nothing on this site is financial advice. NeuraLark is an internet meme experiment. 
+            If you ever ape, do it because you like the bird, not because a stranger on CT told you it’s going to 1B.
+          </span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          © <span id="year"></span> NeuraLark ($LARK). All chaos reserved.
+        </div>
+        <div class="footer-links">
+          <!-- TODO: Update to your real socials -->
+          <a href="https://x.com/NeuraLark" target="_blank" rel="noopener">X / <span>@NeuraLark</span></a>
+          <a href="https://t.me/NeuraLark" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
